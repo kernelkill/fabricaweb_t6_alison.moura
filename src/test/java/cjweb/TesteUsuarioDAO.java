@@ -17,13 +17,13 @@ public class TesteUsuarioDAO {
 		// Instancia do Usuario
 		Usuario usu = new Usuario();
 
-		// testaCadastar(teclado, usu, dao);
+		testaCadastar(teclado, usu, dao);
 		// testeAlterar(teclado, usu, dao);
 		// testeExcluir(teclado, dao);
 		// testeSalvar(teclado, usu, dao);
 		// testeBuscaPorId(teclado, dao);
 		//testeBuscaTodos(dao);
-		testeAutenticar(dao, usu, teclado);
+		//testeAutenticar(dao, usu, teclado);
 
 		// no final...
 		teclado.close();
