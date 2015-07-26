@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Lista de Usuários</title>
 
 <script type="text/javascript">	
 	
@@ -23,6 +23,11 @@
 <% 
 	List<Usuario> lista = (List)request.getAttribute("lista");
 %>
+
+<%@ include file="/WEB-INF/menu.jsp" %>
+<br/>
+<br/>
+<br/>
 <form method="post" action="usucontroller" onsubmit="return confirmar()">
 
 <input type="hidden" name="acao" value="exc" />
@@ -48,6 +53,8 @@
 			<td><%= usu.getSenha() %></td>
 			<td>
 				<input type="checkbox" name="id" value="<%= usu.getId() %>">
+				<!-- Link para alteração -->
+				<a href="usucontroller?acao=alt&id=<%= usu.getId()%>">Alterar</a>
 			</td>
 		</tr>
 	
@@ -58,6 +65,7 @@
 </table>
 
 <input type="submit" value="Excluir"/>
+<input type="button" value="Novo" onclick="location.href='usucontroller?acao=form'"/>
 
 </form>
 

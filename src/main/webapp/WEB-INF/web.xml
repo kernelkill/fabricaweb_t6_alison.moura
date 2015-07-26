@@ -3,7 +3,7 @@
   <display-name>cjweb</display-name>
   
   <welcome-file-list>
-    <welcome-file>welcome.html</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
   
 </web-app>

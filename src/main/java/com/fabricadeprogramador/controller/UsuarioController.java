@@ -64,13 +64,18 @@ public class UsuarioController extends HttpServlet {
 		} else if (acao.equalsIgnoreCase("alt")) {
 
 			if (id != null && !id.isEmpty() && Integer.parseInt(id) > 0) {
-
-				usu.setId(Integer.parseInt(id));
-				usu.setNome(nome);
-				usu.setLogin(login);
-				usu.setSenha(senha);
-
-				dao.alterar(usu);
+				
+				//Pegando o id da requisição
+				String idAlterar = req.getParameter("id");
+				
+				//Buscar o Usuario referente ao idAlterar
+				Usuario usuAlt = dao.buscaPorId(Integer.parseInt(idAlterar));
+				
+				//Colocar o objeto usuario na requisição 
+				req.setAttribute("usuario", usuAlt);
+				
+				//Despachar a requisição para o formusu.jsp
+				req.getRequestDispatcher("/WEB-INF/formusu.jsp").forward(req, resp);
 
 			} else {
 				// Mandar uma mensagem para o usuário
@@ -83,6 +88,16 @@ public class UsuarioController extends HttpServlet {
 
 		} else if (acao.equalsIgnoreCase("form")) {
 
+			//Instanciar um Usuario
+			Usuario usuCad = new Usuario();
+			usuCad.setId(0);
+			usuCad.setNome("");
+			usuCad.setLogin("");
+			usuCad.setSenha("");
+			
+			//Colocar o usuCad como atributo da requisição
+			req.setAttribute("usuario", usuCad);
+			
 			// resp.sendRedirect("WEB-INF/formusu.jsp");
 			req.getRequestDispatcher("WEB-INF/formusu.jsp").forward(req, resp);
 
