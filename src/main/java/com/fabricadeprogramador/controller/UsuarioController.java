@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fabricadeprogramador.persistencia.dao.UsuarioDAO;
+import com.fabricadeprogramador.persistencia.dao.UsuarioDAOJDBC;
 import com.fabricadeprogramador.persistencia.entidade.Usuario;
 
 @WebServlet("/usucontroller")
@@ -48,7 +48,7 @@ public class UsuarioController extends HttpServlet {
 		String senha = req.getParameter("senha");
 
 		// Instanciando o UsuarioDAO
-		UsuarioDAO dao = new UsuarioDAO();
+		UsuarioDAOJDBC dao = new UsuarioDAOJDBC();
 		// Instanciar o usuário
 		Usuario usu = new Usuario();
 
@@ -59,7 +59,7 @@ public class UsuarioController extends HttpServlet {
 			usu.setLogin(login);
 			usu.setSenha(senha);
 
-			dao.cadastrarUsuario(usu);
+			dao.cadastrar(usu);
 
 		} else if (acao.equalsIgnoreCase("alt")) {
 
@@ -69,7 +69,7 @@ public class UsuarioController extends HttpServlet {
 				String idAlterar = req.getParameter("id");
 				
 				//Buscar o Usuario referente ao idAlterar
-				Usuario usuAlt = dao.buscaPorId(Integer.parseInt(idAlterar));
+				Usuario usuAlt = dao.buscarPorId(Integer.parseInt(idAlterar));
 				
 				//Colocar o objeto usuario na requisição 
 				req.setAttribute("usuario", usuAlt);
@@ -104,7 +104,7 @@ public class UsuarioController extends HttpServlet {
 		} else if (acao.equalsIgnoreCase("list")) {
 
 			// Carregar a lista de todos os usuários
-			List<Usuario> listaUsuarios = dao.buscaTodos();
+			List<Usuario> listaUsuarios = dao.buscarTodos();
 
 			// Colocar a lista dentro da requisição
 			req.setAttribute("lista", listaUsuarios);
@@ -125,7 +125,7 @@ public class UsuarioController extends HttpServlet {
 		String acao = req.getParameter("acao");
 
 		// Dao
-		UsuarioDAO dao = new UsuarioDAO();
+		UsuarioDAOJDBC dao = new UsuarioDAOJDBC();
 
 		// Usuario
 		Usuario usu = new Usuario();
@@ -164,7 +164,7 @@ public class UsuarioController extends HttpServlet {
 					usu.setSenha(senha);
 
 					// Instancia o UsuarioDAO
-					dao.cadastrarUsuario(usu);
+					dao.cadastrar(usu);
 
 					// Fazer o Response
 					resp.getWriter().print(

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.fabricadeprogramador.persistencia.dao.UsuarioDAO;
+import com.fabricadeprogramador.persistencia.dao.UsuarioDAOJDBC;
 import com.fabricadeprogramador.persistencia.entidade.Usuario;
 
 @WebServlet("/autenticaController")
@@ -21,7 +21,7 @@ public class AutenticaController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	//Instanciar o UsuarioDAO
-	UsuarioDAO dao = new UsuarioDAO();
+	UsuarioDAOJDBC dao = new UsuarioDAOJDBC();
 
 	public AutenticaController(){
 		

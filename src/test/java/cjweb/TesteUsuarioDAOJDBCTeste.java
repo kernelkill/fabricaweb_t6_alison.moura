@@ -3,17 +3,17 @@ package cjweb;
 import java.util.List;
 import java.util.Scanner;
 
-import com.fabricadeprogramador.persistencia.dao.UsuarioDAO;
+import com.fabricadeprogramador.persistencia.dao.UsuarioDAOJDBC;
 import com.fabricadeprogramador.persistencia.entidade.Usuario;
 
-public class TesteUsuarioDAO {
+public class TesteUsuarioDAOJDBCTeste {
 
 	public static void main(String[] args) {
 
 		// Instancia do scanner
 		Scanner teclado = new Scanner(System.in);
 		// Instancia do UsuarioDAO
-		UsuarioDAO dao = new UsuarioDAO();
+		UsuarioDAOJDBC dao = new UsuarioDAOJDBC();
 		// Instancia do Usuario
 		Usuario usu = new Usuario();
 
@@ -31,7 +31,7 @@ public class TesteUsuarioDAO {
 	}
 
 	public static void testaCadastar(Scanner teclado, Usuario usu,
-			UsuarioDAO dao) {
+			UsuarioDAOJDBC dao) {
 
 		System.out.println("Nome do usuário: ");
 		usu.setNome(teclado.nextLine());
@@ -43,12 +43,12 @@ public class TesteUsuarioDAO {
 		usu.setSenha(teclado.nextLine());
 
 		// Invocar o método cadastrarUsuario
-		dao.cadastrarUsuario(usu);
+		dao.cadastrar(usu);
 		System.out.println("Cadastrar com sucesso!");
 
 	}
 
-	public static void testeAlterar(Scanner teclado, Usuario usu, UsuarioDAO dao) {
+	public static void testeAlterar(Scanner teclado, Usuario usu, UsuarioDAOJDBC dao) {
 
 		System.out.println("Id do usuário: ");
 		usu.setId(teclado.nextInt());
@@ -69,7 +69,7 @@ public class TesteUsuarioDAO {
 
 	}
 
-	public static void testeExcluir(Scanner teclado, UsuarioDAO dao) {
+	public static void testeExcluir(Scanner teclado, UsuarioDAOJDBC dao) {
 
 		System.out.println("Digite o ID do usuário a ser excluído: ");
 		Integer id = teclado.nextInt();
@@ -81,7 +81,7 @@ public class TesteUsuarioDAO {
 
 	}
 
-	public static void testeSalvar(Scanner teclado, Usuario usu, UsuarioDAO dao) {
+	public static void testeSalvar(Scanner teclado, Usuario usu, UsuarioDAOJDBC dao) {
 
 		System.out.println("Id do usuário: ");
 		usu.setId(teclado.nextInt());
@@ -102,13 +102,13 @@ public class TesteUsuarioDAO {
 
 	}
 
-	public static void testeBuscaPorId(Scanner teclado, UsuarioDAO dao) {
+	public static void testeBuscaPorId(Scanner teclado, UsuarioDAOJDBC dao) {
 
 		System.out.println("Digite o ID do usuário a ser buscado: ");
 		Integer id = teclado.nextInt();
 
 		// Invocar o método excluir
-		Usuario usuRetornado = dao.buscaPorId(id);
+		Usuario usuRetornado = dao.buscarPorId(id);
 
 		if (usuRetornado != null) {
 			// Imprimindo o usuario de retorno
@@ -120,10 +120,10 @@ public class TesteUsuarioDAO {
 		}
 	}
 
-	public static void testeBuscaTodos(UsuarioDAO dao) {
+	public static void testeBuscaTodos(UsuarioDAOJDBC dao) {
 
 		// invocar o metodo buscaTodos
-		List<Usuario> lista = dao.buscaTodos();
+		List<Usuario> lista = dao.buscarTodos();
 
 		// Imprimir
 		for (Usuario usu : lista) {
@@ -138,7 +138,7 @@ public class TesteUsuarioDAO {
 		}
 	}
 
-	public static void testeAutenticar(UsuarioDAO dao, Usuario usu,
+	public static void testeAutenticar(UsuarioDAOJDBC dao, Usuario usu,
 			Scanner teclado) {
 
 		System.out.println("Login do usuário: ");
