@@ -3,16 +3,19 @@ package com.fabricadeprogramador.persistencia.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.fabricadeprogramador.persistencia.entidade.Usuario;
 import com.fabricadeprogramador.persistencia.jpa.JPAUtil;
 
-@Repository
+@Repository("usuarioDAOJPA")
 public class UsuarioDAOJPA implements UsuarioDAO {
 
-	EntityManager em = JPAUtil.getEntityManager();
+	@PersistenceContext
+	EntityManager em;
 
 	@Override
 	public void cadastrar(Usuario usuario) {

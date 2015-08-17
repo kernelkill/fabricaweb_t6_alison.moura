@@ -9,11 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+
+import com.fabricadeprogramador.persistencia.dao.UsuarioDAO;
 import com.fabricadeprogramador.persistencia.dao.UsuarioDAOJDBC;
+import com.fabricadeprogramador.persistencia.dao.UsuarioDAOJPA;
 import com.fabricadeprogramador.persistencia.entidade.Usuario;
 
+@Controller
 @WebServlet("/usucontroller")
 public class UsuarioController extends HttpServlet {
+	
+	@Autowired
+	@Qualifier("usuarioDAOJPA")
+	UsuarioDAO usuDao;
 
 	protected HttpServletRequest req;
 	protected HttpServletResponse resp;

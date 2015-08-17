@@ -2,8 +2,11 @@ package com.fabricadeprogramador.persistencia.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.fabricadeprogramador.persistencia.entidade.Usuario;
 
+@Repository
 public interface UsuarioDAO {
 	
 	void cadastrar(Usuario usuario);
