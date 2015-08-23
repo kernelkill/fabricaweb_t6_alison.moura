@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,56 +18,32 @@ public class UsuarioDAOJPA implements UsuarioDAO {
 	@PersistenceContext
 	EntityManager em;
 
-	@Override
+	@Transactional
 	public void cadastrar(Usuario usuario) {
-
-		// Começar a transação
-		em.getTransaction().begin();
 		// Persisti o usuario
 		em.persist(usuario);
-		// commit
-		em.getTransaction().commit();
-		em.close();
 	}
 
-	@Override
+	@Transactional
 	public void alterar(Usuario usuario) {
-
-		em.getTransaction().begin();
-
 		// merge
 		em.merge(usuario);
-		
-		em.getTransaction().commit();
-		em.close();
-
 	}
 
-	@Override
+	@Transactional
 	public void salvar(Usuario usuario) {
-		em.getTransaction().begin();
-
 		// merge
 		em.merge(usuario);
-
-		em.getTransaction().commit();
-		em.close();
-
 	}
 
-	@Override
+	@Transactional
 	public void excluir(Integer id) {
-		
-		em.getTransaction().begin();
 		
 		//find
 		Usuario usuarioRemove = em.find(Usuario.class, id);
 		
 		//remove
 		em.remove(usuarioRemove);
-		
-		em.getTransaction().commit();
-		em.close();
 
 	}
 
