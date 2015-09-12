@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.fabricadeprogramador.persistencia.dao.exception.DAOException;
 import com.fabricadeprogramador.persistencia.entidade.Usuario;

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import com.fabricadeprogramador.persistencia.entidade.Usuario;
 
-@WebFilter(dispatcherTypes={ DispatcherType.REQUEST}, urlPatterns={"/*"})
+//@WebFilter(dispatcherTypes={ DispatcherType.REQUEST}, urlPatterns={"/*"})
 public class FiltroAutenticacao implements Filter{
 
 	@Override
