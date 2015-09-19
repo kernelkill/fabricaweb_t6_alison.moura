@@ -24,6 +24,8 @@ public class Usuario implements Serializable{
 	private String nome;
 	private String login;
 	private String senha;
+	@Column(name="ativo")
+	private boolean ativo;
 	
 	//Perfil do usuário
 	@ManyToOne
