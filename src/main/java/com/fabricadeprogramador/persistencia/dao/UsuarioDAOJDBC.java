@@ -12,7 +12,7 @@ import javax.print.attribute.standard.Finishings;
 import com.fabricadeprogramador.persistencia.entidade.Usuario;
 import com.fabricadeprogramador.persistencia.jdbc.ConexaoFactory;
 
-public class UsuarioDAOJDBC implements UsuarioDAO{
+public class UsuarioDAOJDBC{
 	
 	//Pegar a conxao
 	Connection con = ConexaoFactory.getConexao();

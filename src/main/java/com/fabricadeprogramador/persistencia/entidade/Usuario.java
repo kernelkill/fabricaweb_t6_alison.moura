@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Usuario implements Serializable{
@@ -22,6 +24,11 @@ public class Usuario implements Serializable{
 	private String nome;
 	private String login;
 	private String senha;
+	
+	//Perfil do usuário
+	@ManyToOne
+	@JoinColumn
+	private Perfil perfil;
 	
 	public Integer getId() {
 		return id;
@@ -96,6 +103,12 @@ public class Usuario implements Serializable{
 	public String toString() {
 		return "Usuario id=" + id + ", nome=" + nome + ", login=" + login
 				+ ", senha=" + senha;
+	}
+	public Perfil getPerfil() {
+		return perfil;
+	}
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
 	
 

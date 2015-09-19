@@ -23,12 +23,15 @@ public class UsuarioService {
 	public void salvar(Usuario usu) throws ServiceException {
 		try {
 
-			// verificar se o login já existe
-			Usuario usuarioExistente = dao.buscarPorLogin(usu.getLogin());
+			//Verifica se está salvando ou alterando
+			if(usu.getId()==null || usu.getId()<=0){
+				// verificar se o login já existe
+				Usuario usuarioExistente = dao.buscarPorLogin(usu.getLogin());
 
-			if (usuarioExistente != null) {
-				// se o login já estiver sendo usado, lança-se uma exceção
-				throw new ServiceException("Login já existe!");
+				if (usuarioExistente != null) {
+					// se o login já estiver sendo usado, lança-se uma exceção
+					throw new ServiceException("Login já existe!");
+				}
 			}
 			// salvar usuario
 			dao.salvar(usu);

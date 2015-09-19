@@ -4,8 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	>
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<title>Cadastro de usuário</title>
@@ -14,13 +13,24 @@
 <h:body>
 
 	<h:form>
-	
-	<p:messages/>
+
+		<p:messages />
 
 		<fieldset style="width: 30%; margin: auto;">
 			<legend>Cadastro de Usuário</legend>
 
 			<p:panelGrid columns="2">
+
+				<p:outputLabel value="Perfil: " />
+				<p:selectOneMenu id="perfilsList"
+					value="#{usuarioJSFController.usuario.perfil}"
+					converter="#{perfilConverter}">
+
+					<f:selectItem itemValue="" itemLabel="Selecione" />
+					<f:selectItems value="#{perfilController.perfils}" var="perfil"
+						itemValue="#{perfils}" itemLabel="#{perfil.descricao}"/>
+
+				</p:selectOneMenu>
 
 				<p:outputLabel value="Nome:" />
 				<p:inputText value="#{usuarioJSFController.usuario.nome}" />
@@ -32,10 +42,10 @@
 				<p:inputText value="#{usuarioJSFController.usuario.senha}" />
 
 				<p:commandButton actionListener="#{usuarioJSFController.salvar()}"
-					value="Salvar" process="@form" update="@form"/>
+					value="Salvar" process="@form" update="@form" />
 
 				<p:commandButton actionListener="#{usuarioJSFController.init()}"
-					value="Cancelar" process="@this" update="@form"/>
+					value="Cancelar" process="@this" update="@form" />
 
 			</p:panelGrid>
 
@@ -68,13 +78,15 @@
 			<p:column>
 				<f:facet name="header">Exclusão</f:facet>
 				<p:commandButton
-					actionListener="#{usuarioJSFController.excluir(usu.id)}" value="Excluir" process="@form" update="@all"/>
+					actionListener="#{usuarioJSFController.excluir(usu.id)}"
+					value="Excluir" process="@form" update="@all" />
 			</p:column>
-			
+
 			<p:column>
 				<f:facet name="header">Edição</f:facet>
 				<p:commandButton
-					actionListener="#{usuarioJSFController.editar(usu)}" value="Editar" process="@form" update="@form"/>
+					actionListener="#{usuarioJSFController.editar(usu)}" value="Editar"
+					process="@form" update="@form" />
 			</p:column>
 
 		</p:dataTable>

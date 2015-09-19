@@ -10,6 +10,7 @@
 	
 	<!-- Listamos as entidades(classes) -->
 	<class>com.fabricadeprogramador.persistencia.entidade.Usuario</class>
+	<class>com.fabricadeprogramador.persistencia.entidade.Perfil</class>
 	
 	<!-- JPA ignore as entidades não listadas aqui -->
 	<exclude-unlisted-classes>true</exclude-unlisted-classes>
